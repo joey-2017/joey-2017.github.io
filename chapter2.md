@@ -2,32 +2,114 @@
 
 ### 插入排序
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
+- 循环不变式性质
 
-```markdown
-Syntax highlighted code block
+1.初始化：循环的第一次迭代之前，它为真；
 
-# Header 1
-## Header 2
-### Header 3
+2.保持：如果循环的某地迭代之前它为真，那么下次迭代之前它仍为真；
 
-- Bulleted
-- List
+3.在循环终止时，不变石为我们提供一个有用的性质，该性质有助于证明算法是正确的。
 
-1. Numbered
-2. List
 
-**Bold** and _Italic_ and `Code` text
+- 插入排序python实现
 
-[Link](url) and ![Image](src)
+``` 
+
+## insertion-sort 
+def sort1(data, descend = False):
+    for j in range(len(data)-1):
+        key = data[j+1]
+        i = j
+        if des:cend == True:
+            while i>=0 and data[i]<key:
+                data[i+1] = data[i]
+                i -= 1
+        else:
+            while i>=0 and data[i]>key:
+                data[i+1] = data[i]
+                i -= 1
+        data[i+1] = key
+        
+data = [1, 4, 5, 3, 2]
+print  'data:',data
+sort1(data, descend=False) 
+print 'sorted:',data
+output:
+data: [1, 4, 5, 3, 2]
+sorted: [1, 2, 3, 4, 5]
 ```
 
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
+- 2.1-4 A ,B 为二进制整数，位数为n， 相加结果以二进制存储C中，n+1 位。
 
-### Jekyll Themes
+```
+import random 
+import numpy as np
+n = 5
+random.seed(1)
+# create two binary variable
+A = [random.randint(0, 1) for _ in range(n)]
+B = [random.randint(0, 1) for _ in range(n)]
+print 'A:',A 
+print 'B:', B
 
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/joey-2017/joey-2017.github.io/settings). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
+def add1(A, B):
+    if len(A) != len(B):
+        print "please inpute the same length two array"
+    else: 
+        C = np.repeat(0, len(A)+1)
+        i = len(A)-1
+        while i >=0:
+            C[i+1] = A[i] + B[i] + C[i+1]
+            if C[i+1] >1:
+                C[i] += 1
+                C[i+1] -=2
+            i -= 1    
+        print 'C:',C
+add1(A, B)    
+  OUTPUT: 
+A: [0, 1, 1, 0, 0]
+B: [0, 1, 1, 0, 0]
+C: [0 1 1 0 0 0]   
+```
+- 2.2-2 选择算法python实现
+```
+def select_algroithm(data):
+    for i in range(len(data)):
+        min = data[i]
+        for j in range(len(data)-i-1):
+            index = i
+            if data[j+1+i] < min:
+                min = data[j+1+i]
+                index = j + 1 + i
+            data[index] = data[i]
+            data[i] = min
+data = [3, 11, 5, 9, 0] 
+print 'origal data:', data
+select_algroithm(data)
+print 'ordered data:',data
 
-### Support or Contact
+output:
+origal data: [3, 11, 5, 9, 0]
+ordered data: [0, 3, 5, 9, 11]
+```
+### 分治算法
 
-Having trouble with Pages? Check out our [documentation](https://help.github.com/categories/github-pages-basics/) or [contact support](https://github.com/contact) and we’ll help you sort it out.
+- 冒泡算法python实现
+```
+def  bubble_sort(data):
+    listLength = len(data)
+    for i in range(listLength, 1, -1):
+        for j in range(i-1):
+            if data[j] > data[j+1]:
+                data[j], data[j+1] = data[j+1], data[j]
+    print 'sorted data:', data            
+
+
+if __name__ == '__main__':  
+        data = [3, 4, 1, 2, 5, 8, 0]  
+        print 'data:', data
+        bubble_sort(data)
+output:
+data: [3, 4, 1, 2, 5, 8, 0]
+sorted data: [0, 1, 2, 3, 4, 5, 8]
+```
