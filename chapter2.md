@@ -14,7 +14,6 @@
 - 插入排序python实现
 
 ``` 
-
 ## insertion-sort 
 def sort1(data, descend = False):
     for j in range(len(data)-1):
@@ -66,7 +65,7 @@ def add1(A, B):
             i -= 1    
         print 'C:',C
 add1(A, B)    
-  OUTPUT: 
+OUTPUT: 
 A: [0, 1, 1, 0, 0]
 B: [0, 1, 1, 0, 0]
 C: [0 1 1 0 0 0]   
